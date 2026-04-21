@@ -162,7 +162,7 @@
       display: flex; align-items: center; gap: 6px;
       font-weight: 500; letter-spacing: .2px;
     }
-    .top-bar-item i { color: var(--red); font-size: 15px; }
+    .top-bar-item i { color: var(--red); font-size: 20px; }
     .top-bar-item a { color: var(--dark); transition: color var(--transition); }
     .top-bar-item a:hover { color: var(--red); }
     .top-bar-divider { width: 1px; height: 12px; background: var(--gray-300); }
@@ -254,7 +254,7 @@
       border-radius: 100px; display: flex; align-items: center; justify-content: center;
     }
     .header-action-text { display: flex; flex-direction: column; line-height: 1.2; }
-    .header-action-label { font-size: 15px; color: var(--gray-500); font-weight: 500; }
+    .header-action-label { font-size: 15px; color: var(--dark); font-weight: 500; }
     .header-action-value { font-size: 15px; font-weight: 700; color: var(--dark); }
     .header-action-btn:hover .header-action-value { color: var(--red); }
     .header-actions-divider {
@@ -858,13 +858,14 @@
     .top-bar-chat {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 4px 12px; border-radius: 999px;
-      background: rgba(45,166,225,.1);
-      color: var(--dark);
+      background: #25D366;
+      color: var(--white); font-size: 13px; font-weight: 500;
       transition: background .2s, color .2s;
       white-space: nowrap;
     }
-    .top-bar-chat i { color: var(--red); font-size: 15px; }
-    .top-bar-chat:hover { background: rgba(45,166,225,.18); }
+    .top-bar-chat i { color: var(--white); font-size: 22px; }
+    .top-bar-chat svg.lucide { width: 22px; height: 22px; color: var(--white); }
+    .top-bar-chat:hover { background: #1ebe5d; }
     .hero-slider { border-radius: var(--radius-lg); }
     .hero-slide { border-radius: var(--radius-lg); }
     .hero-slide::before { border-radius: var(--radius-lg); }
@@ -2398,7 +2399,7 @@
     .mobile-menu-toggle.is-open .icon-menu { display: none; }
     .mobile-menu-toggle.is-open .icon-close { display: inline-block; }
     .search-btn svg.lucide { width: 18px; height: 18px; }
-    .header-help svg.lucide { width: 18px; height: 18px; color: var(--red); }
+    .header-help svg.lucide { width: 20px; height: 20px; color: var(--red); }
     .tp-star svg.lucide { fill: #fff; stroke: #fff; width: 14px; height: 14px; }
     .review-verified svg.lucide { width: 14px; height: 14px; }
     .trust-icon svg.lucide { width: 28px; height: 28px; }
@@ -2418,7 +2419,7 @@
     .section-view-link svg.lucide { width: 14px; height: 14px; }
     .mega-panel-seeall svg.lucide { width: 14px; height: 14px; }
     .mobile-nav-link svg.lucide { width: 14px; height: 14px; }
-    .top-bar-item svg.lucide { width: 14px; height: 14px; }
+    .top-bar-item svg.lucide { width: 18px; height: 18px; }
 
     /* ── New header layout ── */
     /* Top bar: centered single row */
@@ -2436,7 +2437,7 @@
       white-space: nowrap; transition: color var(--transition); text-decoration: none;
     }
     .header-help:hover { color: var(--red); }
-    .header-help i { font-size: 18px; color: var(--red); }
+    .header-help i { font-size: 20px; color: var(--red); }
     @media (max-width: 900px) { .header-help { display: none !important; } }
     /* Nav bar right actions: Quick Order | My Account | Cart */
     .nav-actions {
@@ -2485,7 +2486,7 @@
       <div class="top-bar-left">
         <span class="top-bar-item">
           <i data-lucide="truck"></i>
-          <strong>Free Shipping</strong>&nbsp;on orders over&nbsp;<strong>$75</strong>
+          <strong>Free Shipping</strong> on orders over <strong>$75</strong>
         </span>
       </div>
       <div class="top-bar-right">
