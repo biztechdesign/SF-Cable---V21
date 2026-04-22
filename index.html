@@ -1932,12 +1932,13 @@
     .footer-badge {
       display: inline-flex; align-items: center; justify-content: center;
       background: #fff; border-radius: 6px; padding: 6px 10px;
+      height: 60px; box-sizing: border-box;
       transition: transform var(--transition), box-shadow var(--transition);
     }
     .footer-badge:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,.35); }
-    .footer-badge img { height: 38px; width: auto; display: block; }
+    .footer-badge img { height: 40px; width: auto; display: block; object-fit: contain; }
     .footer-badge--bbb { gap: 10px; padding: 6px 12px; }
-    .footer-badge--bbb img { height: 44px; }
+    .footer-badge--bbb img { height: 40px; }
     .footer-badge-meta {
       display: flex; flex-direction: column; line-height: 1.2;
       font-size: 15px; color: #1f2937; font-weight: 600; text-align: left;
@@ -2269,7 +2270,7 @@
       .footer-badges       { align-items: center; justify-content: center; text-align: center; }
       .footer-badge-group  { justify-content: center; gap: 14px; }
       .footer-badge img    { height: 32px; }
-      .footer-badge--bbb img { height: 38px; }
+      .footer-badge--bbb img { height: 32px; }
       /* Section */
       .section             { padding: 22px 0; }
       .section-sm          { padding: 16px 0; }
