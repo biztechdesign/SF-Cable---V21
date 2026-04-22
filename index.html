@@ -1223,7 +1223,7 @@
     /* Top-Rated & Featured Products — photographic images fill the frame, no plate */
     #products-grid .product-img-wrap,
     #feat-track .product-img-wrap {
-      background: transparent; padding: 16px; overflow: hidden;
+      background: transparent; padding: 16px; overflow: hidden; height: 200px;
     }
     #products-grid .product-img-wrap img,
     #feat-track .product-img-wrap img {
@@ -1295,21 +1295,29 @@
       padding: 10px 12px 4px; background: var(--white);
       display: flex; flex-direction: column; flex: 1 1 auto;
     }
+    /* ── Product name: display:block gives reliable fixed height.
+          -webkit-box on the inner <a> handles ellipsis without affecting outer height. ── */
     .product-name {
       font-size: 18px; font-weight: 700; color: var(--dark); margin: 0 0 4px;
-      line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical; overflow: hidden;
-      text-overflow: ellipsis; word-break: break-word;
-      min-height: calc(1.4em * 2);
+      line-height: 1.4; display: block;
+      height: 50px;          /* 18 × 1.4 × 2 = 50.4 px — always exactly 2 lines */
+      overflow: hidden; word-break: break-word;
     }
-    .product-name a { color: inherit; transition: color 0.2s ease; }
+    .product-name a {
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+      overflow: hidden; color: inherit; transition: color 0.2s ease;
+    }
     .product-name a:hover { color: var(--red); }
-    .product-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+    /* ── Rating: fixed height so price always starts at the same vertical position ── */
+    .product-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; height: 24px; overflow: hidden; }
     .stars { display: inline-flex; gap: 2px; font-size: 13px; }
     .stars svg.lucide { fill: #f59e0b; stroke: #f59e0b; width: 1em; height: 1em; }
     .stars .star-empty svg.lucide, .stars .star-empty { fill: none !important; stroke: var(--gray-300) !important; }
     .rating-count { font-size: 15px; color: var(--gray-500); }
-    .product-price { display: flex; align-items: baseline; column-gap: 8px; row-gap: 2px; flex-wrap: wrap; margin-top: auto; min-height: 44px; align-content: flex-start; }
+    /* ── Price: min-height covers worst case (price + old + save).
+          align-content:flex-start pins content to top so price line is always
+          at the same vertical position regardless of how many lines are present. ── */
+    .product-price { display: flex; align-items: baseline; column-gap: 8px; row-gap: 2px; flex-wrap: wrap; min-height: 50px; align-content: flex-start; }
     .price-current { font-size: 18px; font-weight: 800; color: var(--dark); }
     .price-old { font-size: 15px; color: var(--gray-500); text-decoration: line-through; }
     .price-save { font-size: 15px; color: #15803d; font-weight: 600; flex-basis: 100%; }
@@ -2191,14 +2199,14 @@
       .product-img-wrap    { height: 180px; padding: 6px; }
       .product-img-wrap img { max-height: 100%; }
       .product-info        { padding: 8px 10px 4px; }
-      .product-name        { font-size: 15px; margin-bottom: 2px; line-height: 1.35; font-weight: 700; }
-      .product-rating      { margin-bottom: 2px; }
+      .product-name        { font-size: 15px; line-height: 1.35; font-weight: 700; margin-bottom: 2px; height: 41px; } /* 15×1.35×2 */
+      .product-rating      { height: 22px; margin-bottom: 2px; }
       .stars               { font-size: 13px; }
       .rating-count        { font-size: 15px; }
       .price-current       { font-size: 14px; }
       .price-old           { font-size: 13px; }
       .price-save          { font-size: 13px; }
-      .product-price       { margin-top: 4px; gap: 0px 4px; }
+      .product-price       { min-height: 42px; column-gap: 4px; }
       .product-footer      { padding: 8px 12px 10px; gap: 6px; }
       .fav-btn             { width: 36px; height: 36px; font-size: 15px; }
       .add-to-cart,
@@ -2317,8 +2325,8 @@
       .product-img-wrap    { height: 160px; padding: 4px; }
       .product-img-wrap img { max-height: 100%; }
       .product-info        { padding: 6px 8px 4px; }
-      .product-name        { font-size: 17px; margin-bottom: 2px; -webkit-line-clamp: 2; min-height: calc(1.35em * 2); line-height: 1.35; font-weight: 700; }
-      .product-rating      { margin-bottom: 2px; }
+      .product-name        { font-size: 17px; line-height: 1.35; font-weight: 700; margin-bottom: 2px; height: 46px; } /* 17×1.35×2 */
+      .product-rating      { height: 22px; margin-bottom: 2px; }
       .stars               { font-size: 13px; }
       .rating-count        { font-size: 15px; }
       .price-current       { font-size: 14px; }
@@ -2392,14 +2400,15 @@
       /* Products */
       .products-grid       { gap: 5px; }
       .product-img-wrap    { height: 90px; padding: 6px; }
-      .product-name        { font-size: 16px; font-weight: 700; -webkit-line-clamp: 2; }
+      .product-name        { font-size: 16px; line-height: 1.4; font-weight: 700; height: 45px; } /* 16×1.4×2 */
+      .product-rating      { height: 20px; margin-bottom: 2px; }
       .product-info        { padding: 6px 8px 4px; }
       .stars               { font-size: 12px; }
       .rating-count        { font-size: 13px; }
       .price-current       { font-size: 13px; }
       .price-old           { font-size: 12px; }
       .price-save          { font-size: 12px; }
-      .product-price       { margin-top: 3px; gap: 0 3px; }
+      .product-price       { min-height: 38px; column-gap: 3px; }
       .add-to-cart,
       .view-details        { height: 28px; font-size: 11px; padding: 0 4px; }
       .fav-btn             { width: 28px; height: 28px; }
@@ -3244,6 +3253,22 @@
         </div>
         <div class="categories-track-wrap">
           <div class="categories-grid" id="categoriesTrack2">
+            <a href="/power-cords.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/cat-powercord.jpg" alt="Power Cord"></div>
+              <div class="cat-text"><h3>Power Cords</h3><span class="cat-count">180+ Products</span></div>
+            </a>
+            <a href="/network-cables.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/cat-network.jpg" alt="Network Cable"></div>
+              <div class="cat-text"><h3>Network Cables</h3><span class="cat-count">300+ Products</span></div>
+            </a>
+            <a href="/adapters-connectors.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/car-connect.jpg" alt="USB-C Adapter"></div>
+              <div class="cat-text"><h3>Adapters &amp; Connectors</h3><span class="cat-count">400+ Products</span></div>
+            </a>
+            <a href="/extension-cords.html" class="category-card">
+              <div class="cat-img-wrap"><img src="images/cat- extension cord.jpg" alt="Extension Cord"></div>
+              <div class="cat-text"><h3>Extension Cords</h3><span class="cat-count">55+ Products</span></div>
+            </a>
             <a href="/hdmi-cables.html" class="category-card">
               <div class="cat-img-wrap"><img src="images/cat-hdmi.jpg" alt="HDMI Cable"></div>
               <div class="cat-text"><h3>HDMI Cables</h3><span class="cat-count">150+ Products</span></div>
@@ -3252,21 +3277,9 @@
               <div class="cat-img-wrap"><img src="images/cat-usb.jpg" alt="USB Cable"></div>
               <div class="cat-text"><h3>USB Cables</h3><span class="cat-count">200+ Products</span></div>
             </a>
-            <a href="/network-cables.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/cat-network.jpg" alt="Network Cable"></div>
-              <div class="cat-text"><h3>Network Cables</h3><span class="cat-count">300+ Products</span></div>
-            </a>
             <a href="/fiber-optics.html" class="category-card">
               <div class="cat-img-wrap"><img src="images/Cat-fo.jpg" alt="Fiber Optic Cable"></div>
               <div class="cat-text"><h3>Fiber Optics</h3><span class="cat-count">120+ Products</span></div>
-            </a>
-            <a href="/power-cords.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/cat-powercord.jpg" alt="Power Cord"></div>
-              <div class="cat-text"><h3>Power Cords</h3><span class="cat-count">180+ Products</span></div>
-            </a>
-            <a href="/adapters-connectors.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/car-connect.jpg" alt="USB-C Adapter"></div>
-              <div class="cat-text"><h3>Adapters &amp; Connectors</h3><span class="cat-count">400+ Products</span></div>
             </a>
             <a href="/audio-video.html" class="category-card">
               <div class="cat-img-wrap"><img src="images/cat-avcable.jpg" alt="Audio Video Cable"></div>
@@ -3287,10 +3300,6 @@
             <a href="/serial-data-cables.html" class="category-card">
               <div class="cat-img-wrap"><img src="images/cat-data.jpg" alt="Serial Data Cable"></div>
               <div class="cat-text"><h3>Serial &amp; Data</h3><span class="cat-count">80+ Products</span></div>
-            </a>
-            <a href="/extension-cords.html" class="category-card">
-              <div class="cat-img-wrap"><img src="images/cat- extension cord.jpg" alt="Extension Cord"></div>
-              <div class="cat-text"><h3>Extension Cords</h3><span class="cat-count">55+ Products</span></div>
             </a>
           </div>
         </div>
